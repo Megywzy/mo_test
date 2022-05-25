@@ -1,5 +1,25 @@
+import math
+import matplotlib
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from Ground_truth import Ground_truth
+import numpy as np
+from numpy import diff
+from sympy import  Matrix
+from Update import Update
+
+def prediction():
+
+    Xv_new=Update()[0]
+    V=np.zeros((13,1))
+    V[0][0] = X_v[7:, :]
+    V[1][0] = X_v[8:, :]
+    Xv_new= Xv+DT*V
+    return (Xv_new)
+
+
 def predictcovariance():
-    F_n= np.zeros((25,10))
+    F_n= np.zeros((16,10))
     F_n[0][0] = 0.1
     F_n[1][0] = 0.1
     F_n[7][0] = 1
@@ -12,7 +32,7 @@ def predictcovariance():
     F_nt= np.transpose(F_n)
     Q_v=F_n @ Q @ F_nt
     P_k= Q_v
-    F_x= np.zeros((25,25))
+    F_x= np.zeros((16,16))
     F_x[0][0]=1
     F_x[1][1]=1
 
