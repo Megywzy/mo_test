@@ -8,9 +8,10 @@ def Ground_truth():
     t= 50  # simulation time [s]
     X_vinit=np.array([[10],[10],[0],[1],[0],[0],[0],[1],[0],[0],[0],[0],[0]])
 
-
     v=np.array([[1],[1],[0]])
-
+    Xv = X_vinit
+    Xv=Xv+np.array([[v[0,:]*DT],[v[1,:]*DT],[0],[1],[0],[0],[0],[1],[0],[0],[0],[0],[0]], dtype="object")
+    return(Xv)
     q=np.array([[1],[0],[0],[0]])
     w=np.array([[0],[0],[0]])
 
@@ -18,6 +19,7 @@ def Ground_truth():
 
     list_x = []
     list_y = []
+
     n=0
     while n < t+1:
 
@@ -25,9 +27,13 @@ def Ground_truth():
 
         x = X_v[0,:]
         y = X_v[1, :]
+
         n = n + 1
         list_x.append(x)
         list_y.append(y)
+
+
+
 
 
     fig=plt.figure()
@@ -40,11 +46,17 @@ def Ground_truth():
     plt.xlim((0,70))
     plt.ylim((0,70))
     ax.set_zlim(0,70)
-    ax.scatter3D(list_x,list_y , 0,cmap='Greens', label="Groundtruth")
+    ax.scatter3D(list_x,list_y ,0,cmap='Greens', label="Groundtruth")
 
     plt.show()
 
 
 
 Ground_truth()
+
+
+
+
+
+
 
