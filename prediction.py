@@ -7,7 +7,7 @@ import numpy as np
 from numpy import diff
 from sympy import  Matrix
 from Update import Update
-
+DT=1
 def prediction():
 
     Xv_new=Update()[0]
